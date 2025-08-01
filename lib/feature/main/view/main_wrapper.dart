@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:surf_places/common/consts/icons_consts.dart';
+import 'package:surf_places/common/extensions/context_extensions.dart';
 import 'package:surf_places/config/router/routes.dart';
 import 'package:surf_places/feature/main/data/main_wrapper_model.dart';
 
@@ -18,26 +19,26 @@ class _MainWrapperState extends State<MainWrapper> {
   final List<MainWrapperModel> items = [
     MainWrapperModel(
       id: UniqueKey().toString(),
-      icon: AppIcons.wrapperList,
-      selectedIcon: AppIcons.wrapperListSelected,
+      icon: AppIcons.list,
+      selectedIcon: AppIcons.listSelected,
       location: PlacesListRoute().location,
     ),
     MainWrapperModel(
       id: UniqueKey().toString(),
-      icon: AppIcons.wrapperMap,
-      selectedIcon: AppIcons.wrapperMapSelected,
+      icon: AppIcons.map,
+      selectedIcon: AppIcons.mapSelected,
       location: MapRoute().location,
     ),
     MainWrapperModel(
       id: UniqueKey().toString(),
-      icon: AppIcons.wrapperFavorites,
-      selectedIcon: AppIcons.wrapperFavoritesSelected,
+      icon: AppIcons.favorites,
+      selectedIcon: AppIcons.favoritesSelected,
       location: FavoritesRoute().location,
     ),
     MainWrapperModel(
       id: UniqueKey().toString(),
-      icon: AppIcons.wrapperSettings,
-      selectedIcon: AppIcons.wrapperSettingsSelected,
+      icon: AppIcons.settings,
+      selectedIcon: AppIcons.settingsSelected,
       location: SettingsRoute().location,
     ),
   ];
@@ -56,6 +57,7 @@ class _MainWrapperState extends State<MainWrapper> {
     return Scaffold(
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: context.colorExt.primaryColor,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,
