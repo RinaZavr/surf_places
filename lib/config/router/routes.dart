@@ -5,6 +5,7 @@ import 'package:surf_places/feature/favorites/view/favorites_screen.dart';
 import 'package:surf_places/feature/main/view/main_wrapper.dart';
 import 'package:surf_places/feature/map/view/map_screen.dart';
 import 'package:surf_places/feature/places/list/view/places_list_screen.dart';
+import 'package:surf_places/feature/places/search/view/places_search_screen.dart';
 import 'package:surf_places/feature/settings/view/settings_screen.dart';
 
 part 'routes.g.dart';
@@ -12,6 +13,7 @@ part 'routes.g.dart';
 @TypedShellRoute<MainWrapperRoute>(
   routes: [
     TypedGoRoute<PlacesListRoute>(path: AppRoutesConsts.placesList),
+    TypedGoRoute<PlacesSearchRoute>(path: AppRoutesConsts.placesSearch),
     TypedGoRoute<MapRoute>(path: AppRoutesConsts.map),
     TypedGoRoute<FavoritesRoute>(path: AppRoutesConsts.favorites),
     TypedGoRoute<SettingsRoute>(path: AppRoutesConsts.settings),
@@ -33,6 +35,14 @@ class PlacesListRoute extends GoRouteData with _$PlacesListRoute {
       child: const PlacesListScreen(),
       transitionsBuilder: (_, __, ___, child) => child,
     );
+  }
+}
+
+@TypedGoRoute<PlacesSearchRoute>(path: AppRoutesConsts.placesSearch)
+class PlacesSearchRoute extends GoRouteData with _$PlacesSearchRoute {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return PlacesSearchScreen();
   }
 }
 
