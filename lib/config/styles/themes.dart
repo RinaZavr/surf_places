@@ -15,12 +15,11 @@ abstract class AppThemes {
       ThemeTypography.dark(context),
       ThemeShadows.dark(),
     ],
-    scaffoldBackgroundColor: AppColors.black,
-    appBarTheme: const AppBarTheme(backgroundColor: AppColors.black),
+    scaffoldBackgroundColor: AppColors.charcoal,
+    appBarTheme: const AppBarTheme(backgroundColor: AppColors.charcoal),
     progressIndicatorTheme: const ProgressIndicatorThemeData(
-      color: AppColors.white,
+      color: AppColors.romanSilverDark,
     ),
-    iconTheme: const IconThemeData(color: AppColors.white),
   );
 
   static ThemeData light(BuildContext context) => ThemeData(
@@ -34,8 +33,7 @@ abstract class AppThemes {
     scaffoldBackgroundColor: AppColors.white,
     appBarTheme: const AppBarTheme(backgroundColor: AppColors.white),
     progressIndicatorTheme: const ProgressIndicatorThemeData(
-      color: AppColors.black,
+      color: AppColors.romanSilver,
     ),
-    iconTheme: const IconThemeData(color: AppColors.black),
   );
 }
