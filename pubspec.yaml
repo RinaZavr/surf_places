@@ -25,6 +25,7 @@ dependencies:
   talker_bloc_logger: ^4.9.3
   get_it: ^8.1.0
   flutter_svg: ^2.2.0
+  flutter_dotenv: ^5.2.1
 
 dev_dependencies:
   flutter_test:
@@ -41,6 +42,7 @@ flutter:
     - assets/
     - fonts/
     - assets/icons/wrapper/
+    - assets/icons/search/
 
   fonts:
     - family: Roboto
