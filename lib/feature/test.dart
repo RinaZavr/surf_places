@@ -13,19 +13,19 @@ class TestScreen extends StatelessWidget {
             onPressed: () {
               context.theme.changeTheme(themeMode: ThemeMode.dark);
             },
-            child: Text('Dark theme', style: context.textExt.label),
+            child: Text('Dark theme', style: context.textExt.largeTitle),
           ),
           TextButton(
             onPressed: () {
               context.theme.changeTheme(themeMode: ThemeMode.light);
             },
-            child: Text('Light theme', style: context.textExt.label),
+            child: Text('Light theme', style: context.textExt.largeTitle),
           ),
           TextButton(
             onPressed: () {
               context.theme.changeTheme(themeMode: ThemeMode.system);
             },
-            child: Text('System theme', style: context.textExt.label),
+            child: Text('System theme', style: context.textExt.largeTitle),
           ),
         ],
       ),
