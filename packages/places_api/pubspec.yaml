@@ -1,0 +1,32 @@
+# ignore_for_file: sort_pub_dependencies
+
+name: places_api
+description: "Api for surf places project"
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  surf_lint_rules: ^4.0.0
+  dio: ^5.8.0+1
+  retrofit: ^4.7.0
+  json_annotation: ^4.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+  retrofit_generator: ^10.0.1
+  build_runner: ^2.6.0
+  json_serializable: ^6.10.0
+
+flutter:
+  uses-material-design: true
