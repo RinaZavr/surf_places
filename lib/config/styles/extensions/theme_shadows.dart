@@ -4,15 +4,18 @@ import 'package:surf_places/config/styles/shadows.dart';
 
 @immutable
 class ThemeShadows extends ThemeExtension<ThemeShadows> {
-  const ThemeShadows._({required this.primaryShadow});
+  const ThemeShadows._({required this.smallShadow, required this.cardsShadow});
 
   ThemeShadows.dark([Color color = AppColors.white])
-    : primaryShadow = AppShadows.shadow.copyWith(color: color);
+    : smallShadow = AppShadows.smallShadow.copyWith(color: color),
+      cardsShadow = AppShadows.cardsShadow.copyWith(color: color);
 
-  ThemeShadows.light([Color color = AppColors.black])
-    : primaryShadow = AppShadows.shadow.copyWith(color: color);
+  ThemeShadows.light([Color color = AppColors.spaceCadet])
+    : smallShadow = AppShadows.cardsShadow.copyWith(color: color),
+      cardsShadow = AppShadows.smallShadow.copyWith(color: color);
 
-  final BoxShadow primaryShadow;
+  final BoxShadow smallShadow;
+  final BoxShadow cardsShadow;
 
   @override
   ThemeExtension<ThemeShadows> lerp(
@@ -24,13 +27,20 @@ class ThemeShadows extends ThemeExtension<ThemeShadows> {
     }
 
     return ThemeShadows._(
-      primaryShadow: BoxShadow.lerp(primaryShadow, other.primaryShadow, t)!,
+      smallShadow: BoxShadow.lerp(smallShadow, other.smallShadow, t)!,
+      cardsShadow: BoxShadow.lerp(cardsShadow, other.cardsShadow, t)!,
     );
   }
 
   @override
-  ThemeExtension<ThemeShadows> copyWith({BoxShadow? primaryShadow}) {
-    return ThemeShadows._(primaryShadow: primaryShadow ?? this.primaryShadow);
+  ThemeExtension<ThemeShadows> copyWith({
+    BoxShadow? smallShadow,
+    BoxShadow? cardsShadow,
+  }) {
+    return ThemeShadows._(
+      smallShadow: smallShadow ?? this.smallShadow,
+      cardsShadow: cardsShadow ?? this.cardsShadow,
+    );
   }
 
   static ThemeShadows of(BuildContext context) {
