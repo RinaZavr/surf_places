@@ -31,4 +31,5 @@ abstract class AppColors {
 
   static const Color shadowSmall = Color(0x3D1A1A20); // smallShadow (24%)
   static const Color shadowCards = Color(0x291A1A20); // cardsShadow (16%)
+  static const Color jacarta = Color(0x143B3E5B);
 }

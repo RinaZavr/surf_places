@@ -14,6 +14,7 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
     required this.trinityColor,
     required this.shadowSmallColor,
     required this.shadowCardsColor,
+    required this.gradientSecondaryColor,
   });
 
   const ThemeColors.light()
@@ -26,7 +27,8 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
       secondaryColor = AppColors.spaceCadet,
       infoColor = AppColors.romanSilver,
       shadowSmallColor = AppColors.shadowSmall,
-      shadowCardsColor = AppColors.shadowCards;
+      shadowCardsColor = AppColors.shadowCards,
+      gradientSecondaryColor = AppColors.jacarta;
 
   const ThemeColors.dark()
     : primaryColor = AppColors.charcoal,
@@ -38,7 +40,8 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
       secondaryColor = AppColors.whiteDark,
       infoColor = AppColors.romanSilverDark,
       shadowSmallColor = AppColors.shadowSmall,
-      shadowCardsColor = AppColors.shadowCards;
+      shadowCardsColor = AppColors.shadowCards,
+      gradientSecondaryColor = AppColors.jacarta;
 
   final Color primaryColor;
   final Color cardColor;
@@ -50,6 +53,7 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
   final Color trinityColor;
   final Color shadowSmallColor;
   final Color shadowCardsColor;
+  final Color gradientSecondaryColor;
 
   @override
   ThemeExtension<ThemeColors> copyWith({
@@ -63,6 +67,7 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
     Color? trinityColor,
     Color? shadowSmallColor,
     Color? shadowCardsColor,
+    Color? gradientSecondaryColor,
   }) {
     return ThemeColors._(
       primaryColor: primaryColor ?? this.primaryColor,
@@ -75,6 +80,8 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
       trinityColor: trinityColor ?? this.trinityColor,
       shadowSmallColor: shadowSmallColor ?? this.shadowSmallColor,
       shadowCardsColor: shadowCardsColor ?? this.shadowCardsColor,
+      gradientSecondaryColor:
+          gradientSecondaryColor ?? this.gradientSecondaryColor,
     );
   }
 
@@ -92,14 +99,29 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
       cardColor: Color.lerp(cardColor, other.cardColor, t)!,
       secondaryColor: Color.lerp(secondaryColor, other.secondaryColor, t)!,
       accentColor: Color.lerp(accentColor, other.accentColor, t)!,
-      secondaryAccentColor:
-          Color.lerp(secondaryAccentColor, other.secondaryAccentColor, t)!,
+      secondaryAccentColor: Color.lerp(
+        secondaryAccentColor,
+        other.secondaryAccentColor,
+        t,
+      )!,
       importantColor: Color.lerp(importantColor, other.importantColor, t)!,
       infoColor: Color.lerp(infoColor, other.infoColor, t)!,
       trinityColor: Color.lerp(trinityColor, other.trinityColor, t)!,
-      shadowSmallColor: Color.lerp(shadowSmallColor, other.shadowSmallColor, t)!,
-      shadowCardsColor:
-          Color.lerp(shadowCardsColor, other.shadowCardsColor, t)!,
+      shadowSmallColor: Color.lerp(
+        shadowSmallColor,
+        other.shadowSmallColor,
+        t,
+      )!,
+      shadowCardsColor: Color.lerp(
+        shadowCardsColor,
+        other.shadowCardsColor,
+        t,
+      )!,
+      gradientSecondaryColor: Color.lerp(
+        gradientSecondaryColor,
+        other.gradientSecondaryColor,
+        t,
+      )!,
     );
   }
 

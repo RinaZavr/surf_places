@@ -26,6 +26,7 @@ dependencies:
   get_it: ^8.1.0
   flutter_svg: ^2.2.0
   flutter_dotenv: ^5.2.1
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:
@@ -39,10 +40,12 @@ flutter:
   uses-material-design: true
 
   assets:
+    - .env
     - assets/
     - fonts/
     - assets/icons/wrapper/
     - assets/icons/search/
+    - assets/icons/place/
 
   fonts:
     - family: Roboto
