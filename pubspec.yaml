@@ -24,6 +24,7 @@ dependencies:
   talker_dio_logger: ^4.9.3
   talker_bloc_logger: ^4.9.3
   get_it: ^8.1.0
+  flutter_svg: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -38,13 +39,15 @@ flutter:
 
   assets:
     - assets/
+    - fonts/
+    - assets/icons/wrapper/
 
   fonts:
     - family: Roboto
       fonts:
-        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: fonts/Roboto-Regular.ttf
           weight: 400
-        - asset: assets/fonts/Roboto-Medium.ttf
+        - asset: fonts/Roboto-Medium.ttf
           weight: 500
-        - asset: assets/fonts/Roboto-Bold.ttf
+        - asset: fonts/Roboto-Bold.ttf
           weight: 700
