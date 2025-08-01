@@ -517,6 +517,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.1"
+  surf_lint_rules:
+    dependency: "direct main"
+    description:
+      name: surf_lint_rules
+      sha256: "7a48b4a5d2ceb461f14cc5fc4e14a32b623ddfa11918bbff26d202450a71687b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.0"
   term_glyph:
     dependency: transitive
     description:

@@ -1,3 +1,5 @@
+# ignore_for_file: sort_pub_dependencies
+
 name: surf_places
 description: "Final assignment from the Surf Flutter Summer School"
 publish_to: "none"
@@ -14,6 +16,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   provider: ^6.1.5
   go_router: ^16.0.0
+  surf_lint_rules: ^4.0.0
 
 dev_dependencies:
   flutter_test:
