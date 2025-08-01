@@ -11,6 +11,6 @@ abstract class AppRouter {
     debugLogDiagnostics: kDebugMode,
     observers: [TalkerRouteObserver(GetIt.I.get<Talker>())],
     routes: $appRoutes,
-    initialLocation: TestRoute().location,
+    initialLocation: PlacesListRoute().location,
   );
 }
