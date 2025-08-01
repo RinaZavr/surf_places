@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:places_api/api_client.dart';
 import 'package:places_api/src/interceptor.dart';
 
 class DioClient {
@@ -22,4 +23,11 @@ class DioClient {
   late Dio _dio;
 
   Dio get dio => _dio;
+
+  PlacesService? _placesService;
+
+  PlacesService get placesService {
+    _placesService ??= PlacesService(_dio);
+    return _placesService!;
+  }
 }
