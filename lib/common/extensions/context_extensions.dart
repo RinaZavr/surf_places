@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:surf_places/common/notifiers/search_notifier.dart';
 import 'package:surf_places/common/notifiers/theme_notifier.dart';
 import 'package:surf_places/config/styles/extensions/theme_colors.dart';
 import 'package:surf_places/config/styles/extensions/theme_shadows.dart';
@@ -13,4 +14,6 @@ extension ContextExtensions on BuildContext {
   ThemeShadows get shadowExt => Theme.of(this).extension<ThemeShadows>()!;
 
   ThemeNotifier get theme => read<ThemeNotifier>();
+
+  SearchNotifier get search => read<SearchNotifier>();
 }
