@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:surf_places/common/consts/icons_consts.dart';
 import 'package:surf_places/common/extensions/context_extensions.dart';
 import 'package:surf_places/common/widgets/custom_image_widget.dart';
-import 'package:surf_places/common/widgets/custom_svg_icon.dart';
+import 'package:surf_places/common/widgets/empty_data_screen.dart';
 import 'package:surf_places/config/router/routes.dart';
 import 'package:surf_places/feature/places/search/bloc/place_search_bloc.dart';
 
@@ -95,34 +95,10 @@ class _PlacesSearchResultState extends State<PlacesSearchResult> {
               ),
             );
           }
-          return SizedBox(
-            width: double.infinity,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              spacing: 8,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  child: CustomSvgIcon(
-                    icon: AppIcons.search,
-                    color: context.colorExt.trinityColor,
-                    height: MediaQuery.of(context).size.height * 0.1,
-                  ),
-                ),
-                Text(
-                  'Ничего не найдено',
-                  style: context.textExt.subtitle.copyWith(
-                    color: context.colorExt.trinityColor,
-                  ),
-                ),
-                Text(
-                  'Попробуйте изменить параметры поиска',
-                  style: context.textExt.small.copyWith(
-                    color: context.colorExt.trinityColor,
-                  ),
-                ),
-              ],
-            ),
+          return EmptyDataScreen(
+            icon: AppIcons.search,
+            text: 'Ничего не найдено',
+            subtitle: 'Попробуйте изменить параметры поиска',
           );
         },
       ),

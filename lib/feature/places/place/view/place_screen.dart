@@ -1,11 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:screenshot/screenshot.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:surf_places/common/consts/icons_consts.dart';
 import 'package:surf_places/common/extensions/context_extensions.dart';
+import 'package:surf_places/common/utils/utils.dart';
 import 'package:surf_places/common/widgets/back_button.dart';
 import 'package:surf_places/common/widgets/custom_svg_icon.dart';
 import 'package:surf_places/feature/places/place/cubit/place_cubit.dart';
@@ -109,7 +107,7 @@ class _PlaceScreenState extends State<PlaceScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             InkWell(
-                              onTap: sharePlace,
+                              onTap: () => sharePlace(screenshotController),
                               child: Row(
                                 spacing: 8,
                                 children: [
@@ -147,29 +145,5 @@ class _PlaceScreenState extends State<PlaceScreen> {
         ),
       ),
     );
-  }
-
-  Future<void> sharePlace() async {
-    try {
-      final image = await screenshotController.capture();
-
-      if (image == null) {
-        return;
-      }
-
-      await SharePlus.instance.share(
-        ShareParams(
-          files: [
-            XFile.fromData(
-              image,
-              name: 'phrase_of_day.png',
-              mimeType: 'image/png',
-            ),
-          ],
-        ),
-      );
-    } on Exception catch (e) {
-      log('Ошибка при отправке: $e');
-    }
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:places_api/api_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:surf_places/config/repositories/favorites_repository.dart';
 import 'package:surf_places/config/repositories/search_history_repository.dart';
 import 'package:surf_places/feature/app.dart';
 import 'package:talker_bloc_logger/talker_bloc_logger_observer.dart';
@@ -17,6 +18,9 @@ Future<void> main() async {
   final prefs = await SharedPreferences.getInstance();
   final searchHistoryRepository = SearchHistoryRepository(prefs: prefs);
   GetIt.I.registerSingleton<SearchHistoryRepository>(searchHistoryRepository);
+
+  final favoritesRepository = FavoritesRepository(prefs: prefs)..getFavorites();
+  GetIt.I.registerSingleton<FavoritesRepository>(favoritesRepository);
 
   final talker = TalkerFlutter.init();
   GetIt.I.registerSingleton<Talker>(talker);
