@@ -17,7 +17,7 @@ class PlaceResponse {
   @JsonKey(name: 'total')
   final int total;
 
-  @JsonKey(name: 'places')
+  @JsonKey(name: 'results')
   final List<PlaceResult> places;
 
   factory PlaceResponse.fromJson(Map<String, dynamic> json) =>

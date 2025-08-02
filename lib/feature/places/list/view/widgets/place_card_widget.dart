@@ -1,8 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:places_api/api_client.dart';
 import 'package:surf_places/common/consts/icons_consts.dart';
 import 'package:surf_places/common/extensions/context_extensions.dart';
+import 'package:surf_places/common/widgets/custom_image_widget.dart';
 import 'package:surf_places/common/widgets/custom_svg_icon.dart';
 
 class PlaceCardWidget extends StatelessWidget {
@@ -21,28 +21,7 @@ class PlaceCardWidget extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              CachedNetworkImage(
-                imageUrl: place.urls.firstOrNull ?? '',
-                fit: BoxFit.cover,
-                errorWidget: (context, url, error) {
-                  return DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          context.colorExt.secondaryColor,
-                          context.colorExt.gradientSecondaryColor,
-                        ],
-                      ),
-                    ),
-                    child: CustomSvgIcon(
-                      icon: AppIcons.photo,
-                      color: context.colorExt.primaryColor,
-                    ),
-                  );
-                },
-              ),
+              CustomImageWidget(path: place.urls.firstOrNull),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
