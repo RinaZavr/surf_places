@@ -5,6 +5,8 @@ import 'package:surf_places/feature/favorites/view/favorites_screen.dart';
 import 'package:surf_places/feature/main/view/main_wrapper.dart';
 import 'package:surf_places/feature/map/view/map_screen.dart';
 import 'package:surf_places/feature/places/list/view/places_list_screen.dart';
+import 'package:surf_places/feature/places/place/view/place_screen.dart';
+import 'package:surf_places/feature/places/place/view/widgets/images_viewer.dart';
 import 'package:surf_places/feature/places/search/view/places_search_screen.dart';
 import 'package:surf_places/feature/settings/view/settings_screen.dart';
 
@@ -79,5 +81,27 @@ class SettingsRoute extends GoRouteData with _$SettingsRoute {
       child: const SettingsScreen(),
       transitionsBuilder: (_, __, ___, child) => child,
     );
+  }
+}
+
+@TypedGoRoute<PlaceRoute>(path: AppRoutesConsts.place)
+class PlaceRoute extends GoRouteData with _$PlaceRoute {
+  PlaceRoute({required this.id});
+  final int id;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return PlaceScreen(id: id);
+  }
+}
+
+@TypedGoRoute<ImagesViewerRoute>(path: AppRoutesConsts.images)
+class ImagesViewerRoute extends GoRouteData with _$ImagesViewerRoute {
+  ImagesViewerRoute({required this.images});
+  final List<String> images;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return ImagesViewer(images: images);
   }
 }

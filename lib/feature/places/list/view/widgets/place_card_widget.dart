@@ -4,6 +4,7 @@ import 'package:surf_places/common/consts/icons_consts.dart';
 import 'package:surf_places/common/extensions/context_extensions.dart';
 import 'package:surf_places/common/widgets/custom_image_widget.dart';
 import 'package:surf_places/common/widgets/custom_svg_icon.dart';
+import 'package:surf_places/config/router/routes.dart';
 
 class PlaceCardWidget extends StatelessWidget {
   const PlaceCardWidget({required this.place, super.key});
@@ -13,7 +14,9 @@ class PlaceCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        PlaceRoute(id: place.id).push(context);
+      },
       child: AspectRatio(
         aspectRatio: 16 / 9,
         child: ClipRRect(

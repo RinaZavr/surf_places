@@ -28,6 +28,9 @@ dependencies:
   flutter_dotenv: ^5.2.1
   cached_network_image: ^3.4.1
   shared_preferences: ^2.5.3
+  screenshot: ^3.0.0
+  share_plus: ^11.0.0
+  carousel_slider: ^5.1.1
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +50,7 @@ flutter:
     - assets/icons/wrapper/
     - assets/icons/search/
     - assets/icons/place/
+    - assets/icons/common/
 
   fonts:
     - family: Roboto

@@ -12,7 +12,7 @@ abstract class PlacesService {
   @GET('/api/places')
   Future<List<Place>> getPlaces({@Query('page') int page = 1});
 
-  @GET('/api/places{place_id}')
+  @GET('/api/places/{place_id}')
   Future<Place> getPlaceDetails({@Path('place_id') required int placeId});
 
   @GET('/api/places/search')

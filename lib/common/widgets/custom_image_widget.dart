@@ -10,39 +10,47 @@ class CustomImageWidget extends StatelessWidget {
     super.key,
     this.height,
     this.width,
+    this.fit,
   });
 
   final String? path;
   final double? height;
   final double? width;
+  final BoxFit? fit;
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(12),
-      child: CachedNetworkImage(
-        imageUrl: path ?? '',
-        fit: BoxFit.cover,
-        height: height,
-        width: width,
-        errorWidget: (context, url, error) {
-          return DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  context.colorExt.secondaryColor,
-                  context.colorExt.gradientSecondaryColor,
-                ],
-              ),
+      child: path == null || path!.isEmpty
+          ? _getErrorWidget(context)
+          : CachedNetworkImage(
+              imageUrl: path ?? '',
+              fit: fit ?? BoxFit.cover,
+              height: height,
+              width: width,
+              errorWidget: (context, url, error) {
+                return _getErrorWidget(context);
+              },
             ),
-            child: CustomSvgIcon(
-              icon: AppIcons.photo,
-              color: context.colorExt.primaryColor,
-            ),
-          );
-        },
+    );
+  }
+
+  Widget _getErrorWidget(BuildContext context) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            context.colorExt.secondaryColor,
+            context.colorExt.gradientSecondaryColor,
+          ],
+        ),
+      ),
+      child: CustomSvgIcon(
+        icon: AppIcons.photo,
+        color: context.colorExt.primaryColor,
       ),
     );
   }

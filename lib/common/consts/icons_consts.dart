@@ -13,4 +13,6 @@ abstract class AppIcons {
   static const String photo = 'assets/icons/place/Photo.svg';
   static const String clear = 'assets/icons/search/Clear.svg';
   static const String delete = 'assets/icons/search/Delete.svg';
+  static const String back = 'assets/icons/common/Arrow.svg';
+  static const String share = 'assets/icons/place/Share.svg';
 }

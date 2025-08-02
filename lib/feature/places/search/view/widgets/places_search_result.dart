@@ -4,6 +4,7 @@ import 'package:surf_places/common/consts/icons_consts.dart';
 import 'package:surf_places/common/extensions/context_extensions.dart';
 import 'package:surf_places/common/widgets/custom_image_widget.dart';
 import 'package:surf_places/common/widgets/custom_svg_icon.dart';
+import 'package:surf_places/config/router/routes.dart';
 import 'package:surf_places/feature/places/search/bloc/place_search_bloc.dart';
 
 class PlacesSearchResult extends StatefulWidget {
@@ -63,6 +64,11 @@ class _PlacesSearchResultState extends State<PlacesSearchResult> {
                     Divider(indent: MediaQuery.of(context).size.width * 0.15),
                 itemBuilder: (context, index) {
                   return ListTile(
+                    onTap: () {
+                      PlaceRoute(
+                        id: state.places[index].place.id,
+                      ).push(context);
+                    },
                     contentPadding: EdgeInsets.zero,
                     title: Padding(
                       padding: const EdgeInsets.only(bottom: 8),
