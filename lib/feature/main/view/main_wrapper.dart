@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:surf_places/common/consts/icons_consts.dart';
 import 'package:surf_places/common/extensions/context_extensions.dart';
+import 'package:surf_places/common/widgets/custom_svg_icon.dart';
 import 'package:surf_places/config/router/routes.dart';
 import 'package:surf_places/feature/main/data/main_wrapper_model.dart';
 
@@ -71,8 +71,8 @@ class _MainWrapperState extends State<MainWrapper> {
           for (final item in items)
             BottomNavigationBarItem(
               icon: selectedItem.id == item.id
-                  ? SvgPicture.asset(item.selectedIcon)
-                  : SvgPicture.asset(item.icon),
+                  ? CustomSvgIcon(icon: item.selectedIcon)
+                  : CustomSvgIcon(icon: item.icon),
               label: '',
             ),
         ],
