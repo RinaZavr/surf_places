@@ -8,4 +8,5 @@ abstract class AppRoutesConsts {
   static const String map = '/map';
   static const String favorites = '/favorites';
   static const String settings = '/settings';
+  static const String onboarding = '/onboarding';
 }

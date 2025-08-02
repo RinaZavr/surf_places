@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:surf_places/common/consts/icons_consts.dart';
 import 'package:surf_places/common/extensions/context_extensions.dart';
 import 'package:surf_places/common/widgets/custom_svg_icon.dart';
+import 'package:surf_places/config/router/routes.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -45,7 +46,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Padding(
               padding: const EdgeInsets.only(right: 8, bottom: 12, top: 12),
               child: InkWell(
-                onTap: () {},
+                onTap: () => OnboardingRoute().push(context),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

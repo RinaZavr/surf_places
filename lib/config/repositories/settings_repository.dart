@@ -7,6 +7,7 @@ class SettingsRepository {
   final SharedPreferences prefs;
 
   final String themeKey = 'theme';
+  final String onboardingKey = 'onboarding';
 
   Future<void> saveTheme(ThemeMode mode) async {
     await prefs.setString(themeKey, mode.name);
@@ -16,4 +17,10 @@ class SettingsRepository {
     final theme = prefs.getString(themeKey) ?? ThemeMode.system.name;
     return ThemeMode.values.firstWhere((element) => element.name == theme);
   }
+
+  Future<void> saveOnboarding() async {
+    await prefs.setBool(onboardingKey, true);
+  }
+
+  bool getOnboarding() => prefs.getBool(onboardingKey) ?? false;
 }

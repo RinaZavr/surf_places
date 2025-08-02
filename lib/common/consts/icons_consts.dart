@@ -18,4 +18,10 @@ abstract class AppIcons {
   static const String trash = 'assets/icons/place/Backet.svg';
   static const String way = 'assets/icons/favorites/GO.svg';
   static const String info = 'assets/icons/settings/Info.svg';
+  static const String onboardingFirst =
+      'assets/icons/onboarding/Tutorial_1_frame.svg';
+  static const String onboardingSecond =
+      'assets/icons/onboarding/Tutorial_2_frame.svg';
+  static const String onboardingThird =
+      'assets/icons/onboarding/Tutorial_3_frame.svg';
 }
