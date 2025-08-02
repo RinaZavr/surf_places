@@ -6,6 +6,7 @@ import 'package:places_api/api_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:surf_places/config/repositories/favorites_repository.dart';
 import 'package:surf_places/config/repositories/search_history_repository.dart';
+import 'package:surf_places/config/repositories/settings_repository.dart';
 import 'package:surf_places/feature/app.dart';
 import 'package:talker_bloc_logger/talker_bloc_logger_observer.dart';
 import 'package:talker_dio_logger/talker_dio_logger_interceptor.dart';
@@ -21,6 +22,9 @@ Future<void> main() async {
 
   final favoritesRepository = FavoritesRepository(prefs: prefs)..getFavorites();
   GetIt.I.registerSingleton<FavoritesRepository>(favoritesRepository);
+
+  final settingsRepository = SettingsRepository(prefs: prefs);
+  GetIt.I.registerSingleton<SettingsRepository>(settingsRepository);
 
   final talker = TalkerFlutter.init();
   GetIt.I.registerSingleton<Talker>(talker);

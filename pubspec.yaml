@@ -53,6 +53,7 @@ flutter:
     - assets/icons/place/
     - assets/icons/common/
     - assets/icons/favorites/
+    - assets/icons/settings/
 
   fonts:
     - family: Roboto
