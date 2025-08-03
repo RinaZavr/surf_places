@@ -26,18 +26,30 @@ class PlaceSearchBloc extends Bloc<PlaceSearchEvent, PlaceSearchState> {
       if (_currentOffset == 0) {
         emit(state.copyWith(places: [], isLoading: true));
       }
-      final nextPage = await GetIt.I.get<DioClient>().placesService.searchPlace(
-        query: event.searchQuery,
-        offset: _currentOffset,
-      );
-      if (nextPage.places.isNotEmpty) {
+      final nextPageAll = await GetIt.I
+          .get<DioClient>()
+          .placesService
+          .searchPlace(query: event.searchQuery, offset: _currentOffset);
+      final nextPage = nextPageAll.places;
+      if (nextPage.isNotEmpty) {
         final currentPlaces = state.places;
-        final newPlaces = <PlaceResult>[...currentPlaces, ...nextPage.places];
+        if (event.filters.isNotEmpty) {
+          nextPage.removeWhere(
+            (place) => !event.filters
+                .where((filter) => filter.contains(place.place.type))
+                .isNotEmpty,
+          );
+        }
+        final newPlaces = <PlaceResult>[...currentPlaces, ...nextPage];
 
         emit(state.copyWith(places: newPlaces, error: '', isLoading: false));
 
         _currentOffset = newPlaces.length;
-        await GetIt.I.get<SearchHistoryRepository>().updateHistory(query: event.searchQuery);
+        if (event.filters.isEmpty) {
+          await GetIt.I.get<SearchHistoryRepository>().updateHistory(
+            query: event.searchQuery,
+          );
+        }
       }
 
       if (state.places.isEmpty) {
@@ -51,5 +63,3 @@ class PlaceSearchBloc extends Bloc<PlaceSearchEvent, PlaceSearchState> {
     }
   }
 }
-
-class ApiClient {}

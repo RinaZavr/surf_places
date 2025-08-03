@@ -55,6 +55,7 @@ flutter:
     - assets/icons/favorites/
     - assets/icons/settings/
     - assets/icons/onboarding/
+    - assets/icons/filters/
 
   fonts:
     - family: Roboto

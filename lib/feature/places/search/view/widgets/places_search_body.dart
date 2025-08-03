@@ -16,6 +16,7 @@ class PlacesSearchBody extends StatefulWidget {
 class _PlacesSearchBodyState extends State<PlacesSearchBody> {
   String? searchQuery;
   Timer? _debounce;
+  List<String> currentFilters = [];
 
   @override
   void dispose() {
@@ -39,6 +40,13 @@ class _PlacesSearchBodyState extends State<PlacesSearchBody> {
       });
     });
 
+    final filters = context.watch<SearchNotifier>().filters;
+    if (filters.isNotEmpty) {
+      setState(() {
+        currentFilters = filters;
+      });
+    }
+
     super.didChangeDependencies();
   }
 
@@ -48,7 +56,10 @@ class _PlacesSearchBodyState extends State<PlacesSearchBody> {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       child: searchQuery == null || searchQuery!.isEmpty
           ? SearchHistoryWidget()
-          : PlacesSearchResult(searchQuery: searchQuery!),
+          : PlacesSearchResult(
+              searchQuery: searchQuery!,
+              filters: currentFilters,
+            ),
     );
   }
 }

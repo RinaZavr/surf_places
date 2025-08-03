@@ -8,8 +8,10 @@ import 'package:surf_places/feature/onboarding/view/onboarding_screen.dart';
 import 'package:surf_places/feature/places/list/view/places_list_screen.dart';
 import 'package:surf_places/feature/places/place/view/place_screen.dart';
 import 'package:surf_places/feature/places/place/view/widgets/images_viewer.dart';
+import 'package:surf_places/feature/places/search/filters/view/search_filters_screen.dart';
 import 'package:surf_places/feature/places/search/view/places_search_screen.dart';
 import 'package:surf_places/feature/settings/view/settings_screen.dart';
+import 'package:surf_places/feature/splash/view/splash_screen.dart';
 
 part 'routes.g.dart';
 
@@ -111,8 +113,28 @@ class ImagesViewerRoute extends GoRouteData with _$ImagesViewerRoute {
 class OnboardingRoute extends GoRouteData with _$OnboardingRoute {
   OnboardingRoute({this.fromSettings = false});
   final bool fromSettings;
+
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return OnboardingScreen(fromSettings: fromSettings);
+  }
+}
+
+@TypedGoRoute<PlacesSearchFiltersRoute>(
+  path: AppRoutesConsts.placesSearchFilters,
+)
+class PlacesSearchFiltersRoute extends GoRouteData
+    with _$PlacesSearchFiltersRoute {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return SearchFiltersScreen();
+  }
+}
+
+@TypedGoRoute<SplashRoute>(path: AppRoutesConsts.splash)
+class SplashRoute extends GoRouteData with _$SplashRoute {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return SplashScreen();
   }
 }

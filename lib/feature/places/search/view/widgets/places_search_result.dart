@@ -8,9 +8,14 @@ import 'package:surf_places/config/router/routes.dart';
 import 'package:surf_places/feature/places/search/bloc/place_search_bloc.dart';
 
 class PlacesSearchResult extends StatefulWidget {
-  const PlacesSearchResult({required this.searchQuery, super.key});
+  const PlacesSearchResult({
+    required this.searchQuery,
+    super.key,
+    this.filters = const [],
+  });
 
   final String searchQuery;
+  final List<String> filters;
 
   @override
   State<PlacesSearchResult> createState() => _PlacesSearchResultState();
@@ -28,9 +33,14 @@ class _PlacesSearchResultState extends State<PlacesSearchResult> {
 
   @override
   void didUpdateWidget(covariant PlacesSearchResult oldWidget) {
-    if (widget.searchQuery != oldWidget.searchQuery) {
+    if (widget.searchQuery != oldWidget.searchQuery ||
+        widget.filters != oldWidget.filters) {
       _bloc.add(
-        GetSearchResultEvent(searchQuery: widget.searchQuery, offset: 0),
+        GetSearchResultEvent(
+          searchQuery: widget.searchQuery,
+          offset: 0,
+          filters: widget.filters,
+        ),
       );
     }
     super.didUpdateWidget(oldWidget);

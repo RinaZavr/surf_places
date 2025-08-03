@@ -24,4 +24,12 @@ abstract class AppIcons {
       'assets/icons/onboarding/Tutorial_2_frame.svg';
   static const String onboardingThird =
       'assets/icons/onboarding/Tutorial_3_frame.svg';
+  static const String cafeFilter = 'assets/icons/filters/Cafe.svg';
+  static const String hotelFilter = 'assets/icons/filters/Hotel.svg';
+  static const String museumFilter = 'assets/icons/filters/Museum.svg';
+  static const String parkFilter = 'assets/icons/filters/Park.svg';
+  static const String particularFilter =
+      'assets/icons/filters/Particular_place.svg';
+  static const String restourantFilter = 'assets/icons/filters/Restourant.svg';
+  static const String choice = 'assets/icons/filters/Tick.svg';
 }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,6 +7,7 @@ import 'package:surf_places/common/consts/icons_consts.dart';
 import 'package:surf_places/common/extensions/context_extensions.dart';
 import 'package:surf_places/common/notifiers/search_notifier.dart';
 import 'package:surf_places/common/widgets/custom_svg_icon.dart';
+import 'package:surf_places/config/router/routes.dart';
 
 class SearchWidget extends StatefulWidget {
   const SearchWidget({required this.isSearchNow, super.key});
@@ -112,14 +114,25 @@ class _SearchWidgetState extends State<SearchWidget> {
                       },
                       child: CustomSvgIcon(icon: AppIcons.clear, height: 30),
                     ),
-                    InkWell(
-                      onTap: () {},
-                      child: CustomSvgIcon(
-                        icon: AppIcons.filter,
-                        color: context.colorExt.accentColor,
-                        height: 30,
+                    if (controller.text.length >= 3)
+                      InkWell(
+                        onTap: () {
+                          log(context.search.filters.toString());
+                          PlacesSearchFiltersRoute().push(context).then((
+                            filters,
+                          ) {
+                            if (filters != null && filters is List<String>) {
+                              // ignore: use_build_context_synchronously
+                              context.search.changeFilters(filters: filters);
+                            }
+                          });
+                        },
+                        child: CustomSvgIcon(
+                          icon: AppIcons.filter,
+                          color: context.colorExt.accentColor,
+                          height: 30,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               )
