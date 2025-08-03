@@ -32,6 +32,7 @@ dependencies:
   share_plus: ^11.0.0
   carousel_slider: ^5.1.1
   flutter_slidable: ^4.0.0
+  flutter_launcher_icons: ^0.14.4
 
 dev_dependencies:
   flutter_test:
@@ -40,6 +41,12 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   build_runner: ^2.4.6
   go_router_builder: ^3.0.1
+
+flutter_launcher_icons:
+  image_path: "assets/logo/Subtract.png"
+  android: true
+  ios: true
+  remove_alpha_ios: true
 
 flutter:
   uses-material-design: true
@@ -56,6 +63,7 @@ flutter:
     - assets/icons/settings/
     - assets/icons/onboarding/
     - assets/icons/filters/
+    - assets/logo/
 
   fonts:
     - family: Roboto

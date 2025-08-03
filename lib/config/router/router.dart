@@ -42,6 +42,6 @@ abstract class AppRouter {
       }
       return null;
     },
-    initialLocation: OnboardingRoute().location,
+    initialLocation: SplashRoute().location,
   );
 }
