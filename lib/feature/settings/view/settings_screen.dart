@@ -46,7 +46,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Padding(
               padding: const EdgeInsets.only(right: 8, bottom: 12, top: 12),
               child: InkWell(
-                onTap: () => OnboardingRoute().push(context),
+                onTap: () => OnboardingRoute(fromSettings: true).push(context),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

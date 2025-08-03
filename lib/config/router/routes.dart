@@ -109,8 +109,10 @@ class ImagesViewerRoute extends GoRouteData with _$ImagesViewerRoute {
 
 @TypedGoRoute<OnboardingRoute>(path: AppRoutesConsts.onboarding)
 class OnboardingRoute extends GoRouteData with _$OnboardingRoute {
+  OnboardingRoute({this.fromSettings = false});
+  final bool fromSettings;
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return OnboardingScreen();
+    return OnboardingScreen(fromSettings: fromSettings);
   }
 }

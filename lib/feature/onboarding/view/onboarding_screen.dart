@@ -8,7 +8,9 @@ import 'package:surf_places/config/router/routes.dart';
 import 'package:surf_places/feature/onboarding/data/onboarding_model.dart';
 
 class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key});
+  const OnboardingScreen({super.key, this.fromSettings = false});
+
+  final bool fromSettings;
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
@@ -45,7 +47,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               child: InkWell(
                 onTap: () {
                   GetIt.I.get<SettingsRepository>().saveOnboarding();
-                  PlacesListRoute().push(context);
+                  PlacesListRoute().go(context);
                 },
                 child: Text(
                   'Пропустить',
