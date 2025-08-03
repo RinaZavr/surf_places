@@ -43,7 +43,9 @@ class _SearchHistoryWidgetState extends State<SearchHistoryWidget> {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 12),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  context.search.changeQuery(query: history[index]);
+                },
                 child: Row(
                   spacing: 8,
                   children: [

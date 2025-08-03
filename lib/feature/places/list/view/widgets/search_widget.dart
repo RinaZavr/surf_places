@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:surf_places/common/consts/icons_consts.dart';
 import 'package:surf_places/common/extensions/context_extensions.dart';
+import 'package:surf_places/common/notifiers/search_notifier.dart';
 import 'package:surf_places/common/widgets/custom_svg_icon.dart';
 
 class SearchWidget extends StatefulWidget {
@@ -18,6 +20,7 @@ class _SearchWidgetState extends State<SearchWidget> {
   FocusNode focusNode = FocusNode();
   TextEditingController controller = TextEditingController();
   Timer? _debounce;
+  bool isTyping = false;
 
   @override
   void dispose() {
@@ -25,14 +28,29 @@ class _SearchWidgetState extends State<SearchWidget> {
     super.dispose();
   }
 
-  void _onSearchChanged(String value) {
-    if (value.length < 3) return;
+  @override
+  void didChangeDependencies() {
+    if (!mounted) return;
+    if (!isTyping) {
+      controller.text = context.watch<SearchNotifier>().query ?? '';
+    }
+    super.didChangeDependencies();
+  }
 
+  void _onSearchChanged(String value) {
+    if (!mounted) return;
     _debounce?.cancel();
+    setState(() {
+      isTyping = true;
+    });
     _debounce = Timer(const Duration(milliseconds: 500), () {
       if (!mounted) return;
-      context.search.changeQuery(query: value);
+
+      setState(() {
+        isTyping = false;
+      });
     });
+    context.search.changeQuery(query: value);
   }
 
   @override

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:surf_places/common/notifiers/search_notifier.dart';
@@ -13,10 +15,29 @@ class PlacesSearchBody extends StatefulWidget {
 
 class _PlacesSearchBodyState extends State<PlacesSearchBody> {
   String? searchQuery;
+  Timer? _debounce;
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    super.dispose();
+  }
 
   @override
   void didChangeDependencies() {
-    searchQuery = context.watch<SearchNotifier>().query;
+    if (!mounted) return;
+
+    final currentQuery = context.watch<SearchNotifier>().query;
+    if (currentQuery == null || currentQuery.length < 3) return;
+
+    _debounce?.cancel();
+    _debounce = Timer(const Duration(milliseconds: 500), () {
+      if (!mounted) return;
+
+      setState(() {
+        searchQuery = currentQuery;
+      });
+    });
 
     super.didChangeDependencies();
   }
